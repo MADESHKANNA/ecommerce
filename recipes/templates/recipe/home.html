@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <title>Recipe Home</title>
+    {% load static %}
+    <style>
+        body { font-family: Arial; }
+        .product { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; width: 30%; vertical-align: top; text-align: center;}
+        img { width: 100%; height: auto; }
+        a.button { display: inline-block; padding: 5px 10px; background: green; color: white; margin: 5px; text-decoration: none; border-radius: 4px;}
+        a.buy { background: orange; }
+    </style>
+</head>
+<body>
+    <h1>Recipes</h1>
+    <div class="products">
+        {% for product in products %}
+            <div class="product">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img src="{{ product.image }}" alt="{{ product.name }}">
+                    <h2>{{ product.name }}</h2>
+                </a>
+                <p>{{ product.description }}</p>
+                <p><strong>Price: ₹{{ product.price }}</strong></p>
+                <a class="button" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+                <a class="button buy" href="{% url 'buy_now' product.id %}">Buy Now</a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'cart' %}">View Cart</a>
+</body>
+</html>
+
+
+
