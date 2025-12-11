@@ -117,7 +117,9 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',         # <–– this tells Django where your static folder is
+    BASE_DIR / 'recipes' / 'static'
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles' 
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
